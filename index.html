@@ -5,6 +5,7 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
   />
+  <link rel="stylesheet" href="css/style.css">
   <title>Credit Card Payoff Calculator</title>
 
   <style>
@@ -18,12 +19,171 @@
         color: red;
     }
   </style>
+  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@3.4.0"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@4"></script>
+
 </head>
 <body>
+  <div class="title">
+      <h1>Hello, let's see how to calculate the credit card payoff.<br>
+      First of all, you can choose how much you would owe from the bank among $1,000, $5,000, and $10,000.</h1>
+  </div>
+
+<!-- Slider -->
+  <div class="__range __range-step __range-step-popup">
+          <input value="1" type="range" max="3" min="1" step="1" list="ticks2">
+          <datalist id="ticks2">
+            <option value="1">$1,000</option>
+            <option value="2">$5,000</option>
+            <option value="3">$10,000</option>
+
+          </datalist>
+          <output id="principal" class="__range-output-square"></output>
+  </div>
+
+  <div class="title">
+      <h1>Result</h1>
+  </div>
+
+<!-- Data Visualization Javascript -->
+    <div id="vis1"></div>
+    <script>
+      (function(vegaEmbed) {
+        var spec = {"config": {"view": {"width": 400, "height": 300}, "mark": {"tooltip": null}}, "layer": [{"mark": "line", "encoding": {"color": {"type": "nominal", "field": "Amount of Payment"}, "x": {"type": "ordinal", "field": "Month"}, "y": {"type": "quantitative", "field": "Balance"}}, "width": 700}, {"mark": "circle", "encoding": {"opacity": {"value": 0}, "x": {"type": "ordinal", "field": "Month"}}, "selection": {"selector014": {"type": "single", "nearest": true, "on": "mouseover", "fields": ["Month"], "empty": "none"}}}, {"mark": {"type": "point", "filled": true, "size": 70}, "encoding": {"color": {"type": "nominal", "field": "Amount of Payment"}, "opacity": {"condition": {"value": 1, "selection": "selector014"}, "value": 0}, "x": {"type": "ordinal", "field": "Month"}, "y": {"type": "quantitative", "field": "Balance"}}, "width": 700}, {"mark": {"type": "rule", "color": "lightgray", "opacity": 0.5, "size": 4}, "encoding": {"x": {"type": "ordinal", "field": "Month"}}, "transform": [{"filter": {"selection": "selector014"}}]}], "data": {"name": "data-e842c207c77d4984869b536199ef3a87"}, "encoding": {"tooltip": [{"type": "quantitative", "field": "Balance"}, {"type": "ordinal", "field": "Month"}]}, "$schema": "https://vega.github.io/schema/vega-lite/v3.4.0.json", "datasets": {"data-e842c207c77d4984869b536199ef3a87": [{"Month": 1, "Balance": 812.5, "Interest": 12.5, "Principal": 187.5, "Amount of Payment": "Paid $200"}, {"Month": 2, "Balance": 622.66, "Interest": 10.16, "Principal": 189.84, "Amount of Payment": "Paid $200"}, {"Month": 3, "Balance": 430.44, "Interest": 7.78, "Principal": 192.22, "Amount of Payment": "Paid $200"}, {"Month": 4, "Balance": 235.82, "Interest": 5.38, "Principal": 194.62, "Amount of Payment": "Paid $200"}, {"Month": 5, "Balance": 38.77, "Interest": 2.95, "Principal": 197.05, "Amount of Payment": "Paid $200"}, {"Month": 6, "Balance": 0.0, "Interest": 0.0, "Principal": 0.0, "Amount of Payment": "Paid $200"}, {"Month": 1, "Balance": 712.5, "Interest": 12.5, "Principal": 287.5, "Amount of Payment": "Paid $300"}, {"Month": 2, "Balance": 421.41, "Interest": 8.91, "Principal": 291.09, "Amount of Payment": "Paid $300"}, {"Month": 3, "Balance": 126.67, "Interest": 5.27, "Principal": 294.73, "Amount of Payment": "Paid $300"}, {"Month": 4, "Balance": 0.0, "Interest": 0.0, "Principal": 0.0, "Amount of Payment": "Paid $300"}]}};
+        var embedOpt = {"mode": "vega-lite"};
+
+        function showError(el, error){
+            el.innerHTML = ('<div class="error" style="color:red;">'
+                            + '<p>JavaScript Error: ' + error.message + '</p>'
+                            + "<p>This usually means there's a typo in your chart specification. "
+                            + "See the javascript console for the full traceback.</p>"
+                            + '</div>');
+            throw error;
+        }
+        const el = document.getElementById('vis');
+        vegaEmbed("#vis1", spec, embedOpt)
+          .catch(error => showError(el, error));
+      })(vegaEmbed);
+    </script>
+
+    <div id="vis2"></div>
+    <script>
+      (function(vegaEmbed) {
+        var spec = {"config": {"view": {"width": 400, "height": 300}, "mark": {"tooltip": null}}, "layer": [{"mark": "line", "encoding": {"color": {"type": "nominal", "field": "Amount of Payment"}, "x": {"type": "ordinal", "field": "Month"}, "y": {"type": "quantitative", "field": "Balance"}}, "width": 700}, {"mark": "circle", "encoding": {"opacity": {"value": 0}, "x": {"type": "ordinal", "field": "Month"}}, "selection": {"selector015": {"type": "single", "nearest": true, "on": "mouseover", "fields": ["Month"], "empty": "none"}}}, {"mark": {"type": "point", "filled": true, "size": 70}, "encoding": {"color": {"type": "nominal", "field": "Amount of Payment"}, "opacity": {"condition": {"value": 1, "selection": "selector015"}, "value": 0}, "x": {"type": "ordinal", "field": "Month"}, "y": {"type": "quantitative", "field": "Balance"}}, "width": 700}, {"mark": {"type": "rule", "color": "lightgray", "opacity": 0.5, "size": 4}, "encoding": {"x": {"type": "ordinal", "field": "Month"}}, "transform": [{"filter": {"selection": "selector015"}}]}], "data": {"name": "data-7725d9c63dc0a8714e4b00d9c4a99db8"}, "encoding": {"tooltip": [{"type": "quantitative", "field": "Balance"}, {"type": "ordinal", "field": "Month"}]}, "$schema": "https://vega.github.io/schema/vega-lite/v3.4.0.json", "datasets": {"data-7725d9c63dc0a8714e4b00d9c4a99db8": [{"Month": 1, "Balance": 4862.5, "Amount of Payment": "Paid $200"}, {"Month": 1, "Balance": 4762.5, "Amount of Payment": "Paid $300"}, {"Month": 2, "Balance": 4723.28, "Amount of Payment": "Paid $200"}, {"Month": 2, "Balance": 4522.03, "Amount of Payment": "Paid $300"}, {"Month": 3, "Balance": 4582.32, "Amount of Payment": "Paid $200"}, {"Month": 3, "Balance": 4278.56, "Amount of Payment": "Paid $300"}, {"Month": 4, "Balance": 4439.6, "Amount of Payment": "Paid $200"}, {"Month": 4, "Balance": 4032.04, "Amount of Payment": "Paid $300"}, {"Month": 5, "Balance": 4295.1, "Amount of Payment": "Paid $200"}, {"Month": 5, "Balance": 3782.44, "Amount of Payment": "Paid $300"}, {"Month": 6, "Balance": 4148.79, "Amount of Payment": "Paid $200"}, {"Month": 6, "Balance": 3529.72, "Amount of Payment": "Paid $300"}, {"Month": 7, "Balance": 4000.64, "Amount of Payment": "Paid $200"}, {"Month": 7, "Balance": 3273.84, "Amount of Payment": "Paid $300"}, {"Month": 8, "Balance": 3850.65, "Amount of Payment": "Paid $200"}, {"Month": 8, "Balance": 3014.76, "Amount of Payment": "Paid $300"}, {"Month": 9, "Balance": 3698.79, "Amount of Payment": "Paid $200"}, {"Month": 9, "Balance": 2752.45, "Amount of Payment": "Paid $300"}, {"Month": 10, "Balance": 3545.02, "Amount of Payment": "Paid $200"}, {"Month": 10, "Balance": 2486.85, "Amount of Payment": "Paid $300"}, {"Month": 11, "Balance": 3389.33, "Amount of Payment": "Paid $200"}, {"Month": 11, "Balance": 2217.94, "Amount of Payment": "Paid $300"}, {"Month": 12, "Balance": 3231.7, "Amount of Payment": "Paid $200"}, {"Month": 12, "Balance": 1945.66, "Amount of Payment": "Paid $300"}, {"Month": 13, "Balance": 3072.1, "Amount of Payment": "Paid $200"}, {"Month": 13, "Balance": 1669.98, "Amount of Payment": "Paid $300"}, {"Month": 14, "Balance": 2910.5, "Amount of Payment": "Paid $200"}, {"Month": 14, "Balance": 1390.86, "Amount of Payment": "Paid $300"}, {"Month": 15, "Balance": 2746.88, "Amount of Payment": "Paid $200"}, {"Month": 15, "Balance": 1108.25, "Amount of Payment": "Paid $300"}, {"Month": 16, "Balance": 2581.21, "Amount of Payment": "Paid $200"}, {"Month": 16, "Balance": 822.1, "Amount of Payment": "Paid $300"}, {"Month": 17, "Balance": 2413.48, "Amount of Payment": "Paid $200"}, {"Month": 17, "Balance": 532.37, "Amount of Payment": "Paid $300"}, {"Month": 18, "Balance": 2243.65, "Amount of Payment": "Paid $200"}, {"Month": 18, "Balance": 239.03, "Amount of Payment": "Paid $300"}, {"Month": 19, "Balance": 2071.69, "Amount of Payment": "Paid $200"}, {"Month": 19, "Balance": 0.0, "Amount of Payment": "Paid $300"}, {"Month": 20, "Balance": 1897.59, "Amount of Payment": "Paid $200"}, {"Month": 21, "Balance": 1721.31, "Amount of Payment": "Paid $200"}, {"Month": 22, "Balance": 1542.83, "Amount of Payment": "Paid $200"}, {"Month": 23, "Balance": 1362.11, "Amount of Payment": "Paid $200"}, {"Month": 24, "Balance": 1179.14, "Amount of Payment": "Paid $200"}, {"Month": 25, "Balance": 993.88, "Amount of Payment": "Paid $200"}, {"Month": 26, "Balance": 806.3, "Amount of Payment": "Paid $200"}, {"Month": 27, "Balance": 616.38, "Amount of Payment": "Paid $200"}, {"Month": 28, "Balance": 424.08, "Amount of Payment": "Paid $200"}, {"Month": 29, "Balance": 229.39, "Amount of Payment": "Paid $200"}, {"Month": 30, "Balance": 32.25, "Amount of Payment": "Paid $200"}, {"Month": 31, "Balance": 0.0, "Amount of Payment": "Paid $200"}]}};
+        var embedOpt = {"mode": "vega-lite"};
+
+        function showError(el, error){
+            el.innerHTML = ('<div class="error" style="color:red;">'
+                            + '<p>JavaScript Error: ' + error.message + '</p>'
+                            + "<p>This usually means there's a typo in your chart specification. "
+                            + "See the javascript console for the full traceback.</p>"
+                            + '</div>');
+            throw error;
+        }
+        const el = document.getElementById('vis');
+        vegaEmbed("#vis2", spec, embedOpt)
+          .catch(error => showError(el, error));
+      })(vegaEmbed);
+    </script>
+
+    <div id="vis3"></div>
+    <script>
+      (function(vegaEmbed) {
+        var spec = {"config": {"view": {"width": 400, "height": 300}, "mark": {"tooltip": null}}, "layer": [{"mark": "line", "encoding": {"color": {"type": "nominal", "field": "Amount of Payment"}, "x": {"type": "ordinal", "field": "Month"}, "y": {"type": "quantitative", "field": "Balance"}}, "width": 700}, {"mark": "circle", "encoding": {"opacity": {"value": 0}, "x": {"type": "ordinal", "field": "Month"}}, "selection": {"selector016": {"type": "single", "nearest": true, "on": "mouseover", "fields": ["Month"], "empty": "none"}}}, {"mark": {"type": "point", "filled": true, "size": 70}, "encoding": {"color": {"type": "nominal", "field": "Amount of Payment"}, "opacity": {"condition": {"value": 1, "selection": "selector016"}, "value": 0}, "x": {"type": "ordinal", "field": "Month"}, "y": {"type": "quantitative", "field": "Balance"}}, "width": 700}, {"mark": {"type": "rule", "color": "lightgray", "opacity": 0.5, "size": 4}, "encoding": {"x": {"type": "ordinal", "field": "Month"}}, "transform": [{"filter": {"selection": "selector016"}}]}], "data": {"name": "data-09cccce67f42217c6fbb9d256944011c"}, "encoding": {"tooltip": [{"type": "quantitative", "field": "Balance"}, {"type": "ordinal", "field": "Month"}]}, "$schema": "https://vega.github.io/schema/vega-lite/v3.4.0.json", "datasets": {"data-09cccce67f42217c6fbb9d256944011c": [{"Month": 1, "Balance": 9925.0, "Amount of Payment": "Paid $200"}, {"Month": 2, "Balance": 9849.06, "Amount of Payment": "Paid $200"}, {"Month": 3, "Balance": 9772.18, "Amount of Payment": "Paid $200"}, {"Month": 4, "Balance": 9694.33, "Amount of Payment": "Paid $200"}, {"Month": 5, "Balance": 9615.51, "Amount of Payment": "Paid $200"}, {"Month": 6, "Balance": 9535.7, "Amount of Payment": "Paid $200"}, {"Month": 7, "Balance": 9454.9, "Amount of Payment": "Paid $200"}, {"Month": 8, "Balance": 9373.08, "Amount of Payment": "Paid $200"}, {"Month": 9, "Balance": 9290.25, "Amount of Payment": "Paid $200"}, {"Month": 10, "Balance": 9206.38, "Amount of Payment": "Paid $200"}, {"Month": 11, "Balance": 9121.45, "Amount of Payment": "Paid $200"}, {"Month": 12, "Balance": 9035.47, "Amount of Payment": "Paid $200"}, {"Month": 13, "Balance": 8948.42, "Amount of Payment": "Paid $200"}, {"Month": 14, "Balance": 8860.27, "Amount of Payment": "Paid $200"}, {"Month": 15, "Balance": 8771.02, "Amount of Payment": "Paid $200"}, {"Month": 16, "Balance": 8680.66, "Amount of Payment": "Paid $200"}, {"Month": 17, "Balance": 8589.17, "Amount of Payment": "Paid $200"}, {"Month": 18, "Balance": 8496.54, "Amount of Payment": "Paid $200"}, {"Month": 19, "Balance": 8402.74, "Amount of Payment": "Paid $200"}, {"Month": 20, "Balance": 8307.78, "Amount of Payment": "Paid $200"}, {"Month": 21, "Balance": 8211.62, "Amount of Payment": "Paid $200"}, {"Month": 22, "Balance": 8114.27, "Amount of Payment": "Paid $200"}, {"Month": 23, "Balance": 8015.7, "Amount of Payment": "Paid $200"}, {"Month": 24, "Balance": 7915.89, "Amount of Payment": "Paid $200"}, {"Month": 25, "Balance": 7814.84, "Amount of Payment": "Paid $200"}, {"Month": 26, "Balance": 7712.53, "Amount of Payment": "Paid $200"}, {"Month": 27, "Balance": 7608.93, "Amount of Payment": "Paid $200"}, {"Month": 28, "Balance": 7504.05, "Amount of Payment": "Paid $200"}, {"Month": 29, "Balance": 7397.85, "Amount of Payment": "Paid $200"}, {"Month": 30, "Balance": 7290.32, "Amount of Payment": "Paid $200"}, {"Month": 31, "Balance": 7181.45, "Amount of Payment": "Paid $200"}, {"Month": 32, "Balance": 7071.22, "Amount of Payment": "Paid $200"}, {"Month": 33, "Balance": 6959.61, "Amount of Payment": "Paid $200"}, {"Month": 34, "Balance": 6846.6, "Amount of Payment": "Paid $200"}, {"Month": 35, "Balance": 6732.18, "Amount of Payment": "Paid $200"}, {"Month": 36, "Balance": 6616.34, "Amount of Payment": "Paid $200"}, {"Month": 37, "Balance": 6499.04, "Amount of Payment": "Paid $200"}, {"Month": 38, "Balance": 6380.28, "Amount of Payment": "Paid $200"}, {"Month": 39, "Balance": 6260.03, "Amount of Payment": "Paid $200"}, {"Month": 40, "Balance": 6138.28, "Amount of Payment": "Paid $200"}, {"Month": 41, "Balance": 6015.01, "Amount of Payment": "Paid $200"}, {"Month": 42, "Balance": 5890.2, "Amount of Payment": "Paid $200"}, {"Month": 43, "Balance": 5763.83, "Amount of Payment": "Paid $200"}, {"Month": 44, "Balance": 5635.87, "Amount of Payment": "Paid $200"}, {"Month": 45, "Balance": 5506.32, "Amount of Payment": "Paid $200"}, {"Month": 46, "Balance": 5375.15, "Amount of Payment": "Paid $200"}, {"Month": 47, "Balance": 5242.34, "Amount of Payment": "Paid $200"}, {"Month": 48, "Balance": 5107.87, "Amount of Payment": "Paid $200"}, {"Month": 49, "Balance": 4971.72, "Amount of Payment": "Paid $200"}, {"Month": 50, "Balance": 4833.87, "Amount of Payment": "Paid $200"}, {"Month": 51, "Balance": 4694.29, "Amount of Payment": "Paid $200"}, {"Month": 52, "Balance": 4552.97, "Amount of Payment": "Paid $200"}, {"Month": 53, "Balance": 4409.88, "Amount of Payment": "Paid $200"}, {"Month": 54, "Balance": 4265.0, "Amount of Payment": "Paid $200"}, {"Month": 55, "Balance": 4118.32, "Amount of Payment": "Paid $200"}, {"Month": 56, "Balance": 3969.79, "Amount of Payment": "Paid $200"}, {"Month": 57, "Balance": 3819.42, "Amount of Payment": "Paid $200"}, {"Month": 58, "Balance": 3667.16, "Amount of Payment": "Paid $200"}, {"Month": 59, "Balance": 3513.0, "Amount of Payment": "Paid $200"}, {"Month": 60, "Balance": 3356.91, "Amount of Payment": "Paid $200"}, {"Month": 61, "Balance": 3198.87, "Amount of Payment": "Paid $200"}, {"Month": 62, "Balance": 3038.86, "Amount of Payment": "Paid $200"}, {"Month": 63, "Balance": 2876.84, "Amount of Payment": "Paid $200"}, {"Month": 64, "Balance": 2712.81, "Amount of Payment": "Paid $200"}, {"Month": 65, "Balance": 2546.72, "Amount of Payment": "Paid $200"}, {"Month": 66, "Balance": 2378.55, "Amount of Payment": "Paid $200"}, {"Month": 67, "Balance": 2208.28, "Amount of Payment": "Paid $200"}, {"Month": 68, "Balance": 2035.88, "Amount of Payment": "Paid $200"}, {"Month": 69, "Balance": 1861.33, "Amount of Payment": "Paid $200"}, {"Month": 70, "Balance": 1684.6, "Amount of Payment": "Paid $200"}, {"Month": 71, "Balance": 1505.66, "Amount of Payment": "Paid $200"}, {"Month": 72, "Balance": 1324.48, "Amount of Payment": "Paid $200"}, {"Month": 73, "Balance": 1141.03, "Amount of Payment": "Paid $200"}, {"Month": 74, "Balance": 955.3, "Amount of Payment": "Paid $200"}, {"Month": 75, "Balance": 767.24, "Amount of Payment": "Paid $200"}, {"Month": 76, "Balance": 576.83, "Amount of Payment": "Paid $200"}, {"Month": 77, "Balance": 384.04, "Amount of Payment": "Paid $200"}, {"Month": 78, "Balance": 188.84, "Amount of Payment": "Paid $200"}, {"Month": 79, "Balance": 0.0, "Amount of Payment": "Paid $200"}, {"Month": 1, "Balance": 9825.0, "Amount of Payment": "Paid $300"}, {"Month": 2, "Balance": 9647.81, "Amount of Payment": "Paid $300"}, {"Month": 3, "Balance": 9468.41, "Amount of Payment": "Paid $300"}, {"Month": 4, "Balance": 9286.77, "Amount of Payment": "Paid $300"}, {"Month": 5, "Balance": 9102.85, "Amount of Payment": "Paid $300"}, {"Month": 6, "Balance": 8916.64, "Amount of Payment": "Paid $300"}, {"Month": 7, "Balance": 8728.09, "Amount of Payment": "Paid $300"}, {"Month": 8, "Balance": 8537.19, "Amount of Payment": "Paid $300"}, {"Month": 9, "Balance": 8343.91, "Amount of Payment": "Paid $300"}, {"Month": 10, "Balance": 8148.21, "Amount of Payment": "Paid $300"}, {"Month": 11, "Balance": 7950.06, "Amount of Payment": "Paid $300"}, {"Month": 12, "Balance": 7749.44, "Amount of Payment": "Paid $300"}, {"Month": 13, "Balance": 7546.3, "Amount of Payment": "Paid $300"}, {"Month": 14, "Balance": 7340.63, "Amount of Payment": "Paid $300"}, {"Month": 15, "Balance": 7132.39, "Amount of Payment": "Paid $300"}, {"Month": 16, "Balance": 6921.55, "Amount of Payment": "Paid $300"}, {"Month": 17, "Balance": 6708.07, "Amount of Payment": "Paid $300"}, {"Month": 18, "Balance": 6491.92, "Amount of Payment": "Paid $300"}, {"Month": 19, "Balance": 6273.07, "Amount of Payment": "Paid $300"}, {"Month": 20, "Balance": 6051.48, "Amount of Payment": "Paid $300"}, {"Month": 21, "Balance": 5827.12, "Amount of Payment": "Paid $300"}, {"Month": 22, "Balance": 5599.96, "Amount of Payment": "Paid $300"}, {"Month": 23, "Balance": 5369.96, "Amount of Payment": "Paid $300"}, {"Month": 24, "Balance": 5137.09, "Amount of Payment": "Paid $300"}, {"Month": 25, "Balance": 4901.3, "Amount of Payment": "Paid $300"}, {"Month": 26, "Balance": 4662.57, "Amount of Payment": "Paid $300"}, {"Month": 27, "Balance": 4420.85, "Amount of Payment": "Paid $300"}, {"Month": 28, "Balance": 4176.11, "Amount of Payment": "Paid $300"}, {"Month": 29, "Balance": 3928.31, "Amount of Payment": "Paid $300"}, {"Month": 30, "Balance": 3677.41, "Amount of Payment": "Paid $300"}, {"Month": 31, "Balance": 3423.38, "Amount of Payment": "Paid $300"}, {"Month": 32, "Balance": 3166.17, "Amount of Payment": "Paid $300"}, {"Month": 33, "Balance": 2905.75, "Amount of Payment": "Paid $300"}, {"Month": 34, "Balance": 2642.07, "Amount of Payment": "Paid $300"}, {"Month": 35, "Balance": 2375.1, "Amount of Payment": "Paid $300"}, {"Month": 36, "Balance": 2104.79, "Amount of Payment": "Paid $300"}, {"Month": 37, "Balance": 1831.1, "Amount of Payment": "Paid $300"}, {"Month": 38, "Balance": 1553.99, "Amount of Payment": "Paid $300"}, {"Month": 39, "Balance": 1273.41, "Amount of Payment": "Paid $300"}, {"Month": 40, "Balance": 989.33, "Amount of Payment": "Paid $300"}, {"Month": 41, "Balance": 701.69, "Amount of Payment": "Paid $300"}, {"Month": 42, "Balance": 410.47, "Amount of Payment": "Paid $300"}, {"Month": 43, "Balance": 115.6, "Amount of Payment": "Paid $300"}, {"Month": 44, "Balance": 0.0, "Amount of Payment": "Paid $300"}]}};
+        var embedOpt = {"mode": "vega-lite"};
+
+        function showError(el, error){
+            el.innerHTML = ('<div class="error" style="color:red;">'
+                            + '<p>JavaScript Error: ' + error.message + '</p>'
+                            + "<p>This usually means there's a typo in your chart specification. "
+                            + "See the javascript console for the full traceback.</p>"
+                            + '</div>');
+            throw error;
+        }
+        const el = document.getElementById('vis');
+        vegaEmbed("#vis3", spec, embedOpt)
+          .catch(error => showError(el, error));
+      })(vegaEmbed);
+    </script>
+
+<!-- Slider Javascript -->
+  <script>
+    document.querySelectorAll(".__range-step").forEach(function(ctrl) {
+    var el = ctrl.querySelector('input');
+    var output = ctrl.querySelector('output');
+    var newPoint, newPlace, offset;
+    el.oninput =function(){
+      // colorize step options
+      ctrl.querySelectorAll("option").forEach(function(opt) {
+        if(opt.value<=el.valueAsNumber)
+          opt.style.backgroundColor = '#008eee';
+        else
+          opt.style.backgroundColor = '#aaa';
+      });
+      // colorize before and after
+      var valPercent = (el.valueAsNumber  - parseInt(el.min)) / (parseInt(el.max) - parseInt(el.min));
+      var style = 'background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop('+
+      valPercent+', #008eee), color-stop('+
+      valPercent+', #aaa));';
+      el.style = style;
+
+      // Popup
+      if((' ' + ctrl.className + ' ').indexOf(' ' + '__range-step-popup' + ' ') > -1)
+      {
+        var selectedOpt=ctrl.querySelector('option[value="'+el.value+'"]');
+        output.innerText= selectedOpt.text;
+        output.style.left = "50%";
+        output.style.left = ((selectedOpt.offsetLeft + selectedOpt.offsetWidth/2) - output.offsetWidth/2) + 'px';
+      }
+    };
+    el.oninput();
+    });
+
+    window.onresize = function(){
+    document.querySelectorAll(".__range").forEach(function(ctrl) {
+      var el = ctrl.querySelector('input');
+      el.oninput();
+    });
+    };
+  </script>
 
 
+  <script>
+
+    var principal = document.getElementById("principal");
+    if (principal.valueL = "$1,000") {
+      console.log('blah1')
+      document.getElementById("vis1").style.display = 'block';
+      document.getElementById("vis2").style.display = 'none';
+      document.getElementById("vis3").style.display = 'none';
+    } else if (principal.value = "$5,000") {
+      console.log('blah2')
+      document.getElementById("vis1").style.display = 'none';
+      document.getElementById("vis2").style.display = 'block';
+      document.getElementById("vis3").style.display = 'none';
+    } else {
+      console.log('blah3')
+      document.getElementById("vis1").style.display = 'none';
+      document.getElementById("vis2").style.display = 'none';
+      document.getElementById("vis3").style.display = 'block';
+    }
+
+
+  </script>
+
+<h2>
+  When you pay $200 every month after owing $1,000, you will eventually 3.9% of interest out of all payment.
+</h2>
+
+ <img src="images/chart1000_200.png" alt="When the principal is $1,000 and minimum payment is $200." style="width:30%"> <br/>
+
+ <h2>
+   When you pay $300 every month after owing $1,000, you will eventually 3.0% of interest out of all payment.
+ </h2>
+ <img src="images/chart1000_300.png" alt="When the principal is $1,000 and minimum payment is $300." style="width:30%">
 </body>
+
 </html>
