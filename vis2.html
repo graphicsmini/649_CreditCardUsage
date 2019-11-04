@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .vega-actions a {
+        margin-right: 12px;
+        color: #757575;
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@3.4.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@4"></script>
+</head>
+<body>
+  <div id="vis2"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"width": 400, "height": 300}, "mark": {"tooltip": null}}, "layer": [{"mark": "line", "encoding": {"color": {"type": "nominal", "field": "Amount of Payment"}, "x": {"type": "ordinal", "field": "Month"}, "y": {"type": "quantitative", "field": "Balance"}}, "width": 700}, {"mark": "circle", "encoding": {"opacity": {"value": 0}, "x": {"type": "ordinal", "field": "Month"}}, "selection": {"selector015": {"type": "single", "nearest": true, "on": "mouseover", "fields": ["Month"], "empty": "none"}}}, {"mark": {"type": "point", "filled": true, "size": 70}, "encoding": {"color": {"type": "nominal", "field": "Amount of Payment"}, "opacity": {"condition": {"value": 1, "selection": "selector015"}, "value": 0}, "x": {"type": "ordinal", "field": "Month"}, "y": {"type": "quantitative", "field": "Balance"}}, "width": 700}, {"mark": {"type": "rule", "color": "lightgray", "opacity": 0.5, "size": 4}, "encoding": {"x": {"type": "ordinal", "field": "Month"}}, "transform": [{"filter": {"selection": "selector015"}}]}], "data": {"name": "data-7725d9c63dc0a8714e4b00d9c4a99db8"}, "encoding": {"tooltip": [{"type": "quantitative", "field": "Balance"}, {"type": "ordinal", "field": "Month"}]}, "$schema": "https://vega.github.io/schema/vega-lite/v3.4.0.json", "datasets": {"data-7725d9c63dc0a8714e4b00d9c4a99db8": [{"Month": 1, "Balance": 4862.5, "Amount of Payment": "Paid $200"}, {"Month": 1, "Balance": 4762.5, "Amount of Payment": "Paid $300"}, {"Month": 2, "Balance": 4723.28, "Amount of Payment": "Paid $200"}, {"Month": 2, "Balance": 4522.03, "Amount of Payment": "Paid $300"}, {"Month": 3, "Balance": 4582.32, "Amount of Payment": "Paid $200"}, {"Month": 3, "Balance": 4278.56, "Amount of Payment": "Paid $300"}, {"Month": 4, "Balance": 4439.6, "Amount of Payment": "Paid $200"}, {"Month": 4, "Balance": 4032.04, "Amount of Payment": "Paid $300"}, {"Month": 5, "Balance": 4295.1, "Amount of Payment": "Paid $200"}, {"Month": 5, "Balance": 3782.44, "Amount of Payment": "Paid $300"}, {"Month": 6, "Balance": 4148.79, "Amount of Payment": "Paid $200"}, {"Month": 6, "Balance": 3529.72, "Amount of Payment": "Paid $300"}, {"Month": 7, "Balance": 4000.64, "Amount of Payment": "Paid $200"}, {"Month": 7, "Balance": 3273.84, "Amount of Payment": "Paid $300"}, {"Month": 8, "Balance": 3850.65, "Amount of Payment": "Paid $200"}, {"Month": 8, "Balance": 3014.76, "Amount of Payment": "Paid $300"}, {"Month": 9, "Balance": 3698.79, "Amount of Payment": "Paid $200"}, {"Month": 9, "Balance": 2752.45, "Amount of Payment": "Paid $300"}, {"Month": 10, "Balance": 3545.02, "Amount of Payment": "Paid $200"}, {"Month": 10, "Balance": 2486.85, "Amount of Payment": "Paid $300"}, {"Month": 11, "Balance": 3389.33, "Amount of Payment": "Paid $200"}, {"Month": 11, "Balance": 2217.94, "Amount of Payment": "Paid $300"}, {"Month": 12, "Balance": 3231.7, "Amount of Payment": "Paid $200"}, {"Month": 12, "Balance": 1945.66, "Amount of Payment": "Paid $300"}, {"Month": 13, "Balance": 3072.1, "Amount of Payment": "Paid $200"}, {"Month": 13, "Balance": 1669.98, "Amount of Payment": "Paid $300"}, {"Month": 14, "Balance": 2910.5, "Amount of Payment": "Paid $200"}, {"Month": 14, "Balance": 1390.86, "Amount of Payment": "Paid $300"}, {"Month": 15, "Balance": 2746.88, "Amount of Payment": "Paid $200"}, {"Month": 15, "Balance": 1108.25, "Amount of Payment": "Paid $300"}, {"Month": 16, "Balance": 2581.21, "Amount of Payment": "Paid $200"}, {"Month": 16, "Balance": 822.1, "Amount of Payment": "Paid $300"}, {"Month": 17, "Balance": 2413.48, "Amount of Payment": "Paid $200"}, {"Month": 17, "Balance": 532.37, "Amount of Payment": "Paid $300"}, {"Month": 18, "Balance": 2243.65, "Amount of Payment": "Paid $200"}, {"Month": 18, "Balance": 239.03, "Amount of Payment": "Paid $300"}, {"Month": 19, "Balance": 2071.69, "Amount of Payment": "Paid $200"}, {"Month": 19, "Balance": 0.0, "Amount of Payment": "Paid $300"}, {"Month": 20, "Balance": 1897.59, "Amount of Payment": "Paid $200"}, {"Month": 21, "Balance": 1721.31, "Amount of Payment": "Paid $200"}, {"Month": 22, "Balance": 1542.83, "Amount of Payment": "Paid $200"}, {"Month": 23, "Balance": 1362.11, "Amount of Payment": "Paid $200"}, {"Month": 24, "Balance": 1179.14, "Amount of Payment": "Paid $200"}, {"Month": 25, "Balance": 993.88, "Amount of Payment": "Paid $200"}, {"Month": 26, "Balance": 806.3, "Amount of Payment": "Paid $200"}, {"Month": 27, "Balance": 616.38, "Amount of Payment": "Paid $200"}, {"Month": 28, "Balance": 424.08, "Amount of Payment": "Paid $200"}, {"Month": 29, "Balance": 229.39, "Amount of Payment": "Paid $200"}, {"Month": 30, "Balance": 32.25, "Amount of Payment": "Paid $200"}, {"Month": 31, "Balance": 0.0, "Amount of Payment": "Paid $200"}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis2", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

@@ -111,11 +111,31 @@
 
 <!-- Slider Javascript -->
   <script>
+  function changeVisibility() {
+    var principal = document.getElementById("principal");
+    if (principal.innerHTML == "$1,000") {
+      console.log('blah1')
+      document.getElementById("vis1").style.display = 'block';
+      document.getElementById("vis2").style.display = 'none';
+      document.getElementById("vis3").style.display = 'none';
+    } else if (principal.innerHTML == "$5,000") {
+      console.log('blah2')
+      document.getElementById("vis1").style.display = 'none';
+      document.getElementById("vis2").style.display = 'block';
+      document.getElementById("vis3").style.display = 'none';
+    } else {
+      console.log('blah3')
+      document.getElementById("vis1").style.display = 'none';
+      document.getElementById("vis2").style.display = 'none';
+      document.getElementById("vis3").style.display = 'block';
+    }
+  }
     document.querySelectorAll(".__range-step").forEach(function(ctrl) {
     var el = ctrl.querySelector('input');
     var output = ctrl.querySelector('output');
     var newPoint, newPlace, offset;
     el.oninput =function(){
+        changeVisibility();
       // colorize step options
       ctrl.querySelectorAll("option").forEach(function(opt) {
         if(opt.value<=el.valueAsNumber)
@@ -150,29 +170,6 @@
     };
   </script>
 
-
-  <script>
-
-    var principal = document.getElementById("principal");
-    if (principal.valueL = "$1,000") {
-      console.log('blah1')
-      document.getElementById("vis1").style.display = 'block';
-      document.getElementById("vis2").style.display = 'none';
-      document.getElementById("vis3").style.display = 'none';
-    } else if (principal.value = "$5,000") {
-      console.log('blah2')
-      document.getElementById("vis1").style.display = 'none';
-      document.getElementById("vis2").style.display = 'block';
-      document.getElementById("vis3").style.display = 'none';
-    } else {
-      console.log('blah3')
-      document.getElementById("vis1").style.display = 'none';
-      document.getElementById("vis2").style.display = 'none';
-      document.getElementById("vis3").style.display = 'block';
-    }
-
-
-  </script>
 
 <h2>
   When you pay $200 every month after owing $1,000, you will eventually 3.9% of interest out of all payment.

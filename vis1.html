@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .vega-actions a {
+        margin-right: 12px;
+        color: #757575;
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@3.4.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@4"></script>
+</head>
+<body>
+  <div id="vis1"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"width": 400, "height": 300}, "mark": {"tooltip": null}}, "layer": [{"mark": "line", "encoding": {"color": {"type": "nominal", "field": "Amount of Payment"}, "x": {"type": "ordinal", "field": "Month"}, "y": {"type": "quantitative", "field": "Balance"}}, "width": 700}, {"mark": "circle", "encoding": {"opacity": {"value": 0}, "x": {"type": "ordinal", "field": "Month"}}, "selection": {"selector014": {"type": "single", "nearest": true, "on": "mouseover", "fields": ["Month"], "empty": "none"}}}, {"mark": {"type": "point", "filled": true, "size": 70}, "encoding": {"color": {"type": "nominal", "field": "Amount of Payment"}, "opacity": {"condition": {"value": 1, "selection": "selector014"}, "value": 0}, "x": {"type": "ordinal", "field": "Month"}, "y": {"type": "quantitative", "field": "Balance"}}, "width": 700}, {"mark": {"type": "rule", "color": "lightgray", "opacity": 0.5, "size": 4}, "encoding": {"x": {"type": "ordinal", "field": "Month"}}, "transform": [{"filter": {"selection": "selector014"}}]}], "data": {"name": "data-e842c207c77d4984869b536199ef3a87"}, "encoding": {"tooltip": [{"type": "quantitative", "field": "Balance"}, {"type": "ordinal", "field": "Month"}]}, "$schema": "https://vega.github.io/schema/vega-lite/v3.4.0.json", "datasets": {"data-e842c207c77d4984869b536199ef3a87": [{"Month": 1, "Balance": 812.5, "Interest": 12.5, "Principal": 187.5, "Amount of Payment": "Paid $200"}, {"Month": 2, "Balance": 622.66, "Interest": 10.16, "Principal": 189.84, "Amount of Payment": "Paid $200"}, {"Month": 3, "Balance": 430.44, "Interest": 7.78, "Principal": 192.22, "Amount of Payment": "Paid $200"}, {"Month": 4, "Balance": 235.82, "Interest": 5.38, "Principal": 194.62, "Amount of Payment": "Paid $200"}, {"Month": 5, "Balance": 38.77, "Interest": 2.95, "Principal": 197.05, "Amount of Payment": "Paid $200"}, {"Month": 6, "Balance": 0.0, "Interest": 0.0, "Principal": 0.0, "Amount of Payment": "Paid $200"}, {"Month": 1, "Balance": 712.5, "Interest": 12.5, "Principal": 287.5, "Amount of Payment": "Paid $300"}, {"Month": 2, "Balance": 421.41, "Interest": 8.91, "Principal": 291.09, "Amount of Payment": "Paid $300"}, {"Month": 3, "Balance": 126.67, "Interest": 5.27, "Principal": 294.73, "Amount of Payment": "Paid $300"}, {"Month": 4, "Balance": 0.0, "Interest": 0.0, "Principal": 0.0, "Amount of Payment": "Paid $300"}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis1", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
